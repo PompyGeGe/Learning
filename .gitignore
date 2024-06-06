@@ -1,0 +1,4 @@
+learning-server/target/
+.idea/
+learning-server/*.iml
+learning-server/logs/
