@@ -2,3 +2,5 @@ learning-server/target/
 .idea/
 learning-server/*.iml
 learning-server/logs/
+out/production/test/
+test/test.iml

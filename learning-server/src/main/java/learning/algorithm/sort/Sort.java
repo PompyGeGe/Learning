@@ -1,7 +1,7 @@
 package learning.algorithm.sort;
 import java.util.List;
 
-public abstract class Sort {
+public class Sort {
 
     //打印数组
     static void printArray(int i, int[] array) {
