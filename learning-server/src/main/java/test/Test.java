@@ -1,6 +1,7 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -12,21 +13,59 @@ import java.util.function.Consumer;
 public class Test {
 
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("2");
-
-        Consumer consumer=item-> System.out.println(item);
-
-        Consumer consumer1= new Consumer(){
-
-            @Override
-            public void accept(Object o) {
-                System.out.println("你没得="+o.toString());
-
-            }
-        };
-
-
-        consumer1.accept("你你你");
+        int a[] = {4, 5, 9};
+        int b[] = {1, 7, 6, 1};
+        System.out.println(add(a, b));
     }
+
+    /**
+     * 返回总数
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int add(int a[], int b[]){
+        int maxIndex = a.length>b.length?a.length:b.length;
+        int[]sum= new int[maxIndex];
+
+        int i=maxIndex-1;
+        while (i>0) {
+            sum[i] = tenMi(maxIndex-1-i)*(getInt(a, i)+getInt(b, i));
+            i--;
+        }
+
+        return sum(sum);
+    }
+
+    static int getInt(int array[], int i) {
+        if (i >= array.length - 1) {
+            return 0;
+        }
+        return array[i];
+    }
+
+
+    static int tenMi(int i){
+        int sum=1;
+        if (i == 0) {
+            return sum;
+        }
+
+        while(i>=1){
+            sum*=10;
+            i--;
+        }
+        return sum;
+    }
+
+    static int sum(int array[]){
+        int sum=0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        return sum;
+    }
+
+
+
 }

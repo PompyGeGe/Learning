@@ -24,17 +24,17 @@ public class FindIslands {
             {1, 1, 0}
     };
 
-    public static final int x = 4;//4个数组
-    public static final int y = 3;//每个数组有3个元素
-    public static final boolean[][] visited = new boolean[x][y];
+    public static final int X = 4;//4个数组
+    public static final int Y = 3;//每个数组有3个元素
+    public static final boolean[][] visited = new boolean[X][Y];
 
     public static void main(String[] args) {
 
-        Set<List<Island>> set = new Solution().connectedIslandsSet();
-        for (List<Island> list : set) {
+        List<List<Island>> list = new Solution().connectedIslandsList();
+        for (List<Island> islands : list) {
 
             //打印相连的岛屿
-            for (Island island : list) {
+            for (Island island : islands) {
                 System.out.print(island.getX()+","+island.getY()+"  ");
             }
             System.out.println();
@@ -69,8 +69,8 @@ public class FindIslands {
          *
          * @return
          */
-        public Set<List<Island>> connectedIslandsSet() {
-            Set<List<Island>> set = new HashSet<>();
+        public List<List<Island>> connectedIslandsList() {
+            List<List<Island>> list = new ArrayList<>();
 
             //遍历数组的每一个元素
             for (int i = 0; i < grid.length; i++) {
@@ -78,12 +78,12 @@ public class FindIslands {
                     //List<Island> islands = findIslandsByDFS(i, j);
                     List<Island> islands = findIslandsByBFS(i, j);
                     if (!CollectionUtils.isEmpty(islands)) {
-                        set.add(islands);
+                        list.add(islands);
                     }
                 }
             }
 
-            return set;
+            return list;
         }
 
         /**
@@ -115,6 +115,16 @@ public class FindIslands {
         }
 
         /**
+         * 是岛屿且还没访问过，且没有超出数组边界
+         */
+        private boolean isIslandAndNotVisited(int x, int y){
+            if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length && grid[x][y] == 1 && visited[x][y]==false) {
+                return true;
+            }
+            return false;
+        }
+
+        /**
          * 广度优先- 找出(i,j)附近相连的岛屿
          * @param i
          * @param j
@@ -125,7 +135,7 @@ public class FindIslands {
             Queue queue = new ArrayDeque<Island>();
 
             //自己
-            if (i >= 0 && i < grid.length && j >= 0 && j < grid[0].length && grid[i][j] == 1) {
+            if (isIslandAndNotVisited(i,j)) {
                 queue.add(new Island(i, j));
             }
 
@@ -133,27 +143,71 @@ public class FindIslands {
             while(!queue.isEmpty()){
                 Island island = (Island)queue.poll();
                 islands.add(island);
-                visited[island.getX()][island.getY()]=true;
+                int x = island.getX();
+                int y = island.getY();
+                visited[x][y]=true;
 
                 //上
-                if (i-1 >= 0 && i-1 < grid.length && j >= 0 && j < grid[0].length && grid[i-1][j] == 1 && visited[i][j]==false) {
-                    queue.add(new Island(i-1, j));
+                if (isIslandAndNotVisited(x-1, y)) {
+                    queue.add(new Island(x-1, y));
                 }
 
                 //下
-                if (i+1 >= 0 && i+1 < grid.length && j >= 0 && j < grid[0].length && grid[i+1][j] == 1 && visited[i][j]==false) {
-                    queue.add(new Island(i+1, j));
+                if (isIslandAndNotVisited(x + 1, y)) {
+                    queue.add(new Island(x + 1, y));
                 }
 
                 //左
-                if (i >= 0 && i < grid.length && j-1 >= 0 && j-1 < grid[0].length && grid[i][j-1] == 1 && visited[i][j]==false) {
-                    queue.add(new Island(i, j-1));
+                if (isIslandAndNotVisited(x, y-1)) {
+                    queue.add(new Island(x, y-1));
                 }
 
                 //右
-                if (i >= 0 && i < grid.length && j+1 >= 0 && j+1 < grid[0].length && grid[i][j+1] == 1 && visited[i][j]==false) {
-                    queue.add(new Island(i, j+1));
+                if (isIslandAndNotVisited(x, y+1)) {
+                    queue.add(new Island(x, y+1));
                 }
+            }
+
+            return islands;
+        }
+
+        /**
+         * 广度优先- 找出(i,j)附近相连的岛屿 -- 简化版
+         * @param i
+         * @param j
+         * @return
+         */
+        private List<Island> findIslandsByBFS_1(int i, int j) {
+            List<Island> islands = new ArrayList<>();
+            Queue queue = new ArrayDeque<Island>();
+
+            //自己
+            queue.add(new Island(i, j));
+
+            //bfs结束的条件是队列为空
+            while(!queue.isEmpty()){
+                Island island = (Island)queue.poll();
+
+                int x = island.getX();
+                int y = island.getY();
+                if (!isIslandAndNotVisited(x, y)) {
+                    continue;
+                }
+
+                islands.add(island);
+                visited[x][y]=true;
+
+                //上
+                queue.add(new Island(x-1, y));
+
+                //下
+                queue.add(new Island(x + 1, y));
+
+                //左
+                queue.add(new Island(x, y-1));
+
+                //右
+                queue.add(new Island(x, y+1));
             }
 
             return islands;

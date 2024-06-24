@@ -247,10 +247,12 @@ public class SortSelfTest extends Sort {
     }
 
     /**
-     * 用栈来实现快速排序
+     * 快速排序-用栈来模拟递归
      * @param a
      */
     public static void quick_sort_stack(int a[]){
+
+
 
 
 
