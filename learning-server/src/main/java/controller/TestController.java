@@ -2,7 +2,9 @@ package controller;
 
 import controller.common.builder.ResponseBuilder;
 import controller.dto.request.ReqDTO;
+import controller.dto.request.RequestDTO;
 import controller.dto.response.BaseResponseDTO;
+import learning.spring.TestBeanFactory;
 import learning.spring.TestPropertiesConfig;
 import learning.stateMachine.service.TestExecuteService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,9 @@ public class TestController {
     @Autowired
     private TestPropertiesConfig testPropertiesConfig;
 
+    @Autowired
+    private TestBeanFactory testBeanFactory;
+
 
 
     @PostMapping("/stateMachine")
@@ -38,5 +43,11 @@ public class TestController {
                 + testPropertiesConfig.getB();
         log.info(str);
         return str;
+    }
+
+    @PostMapping("/getClass")
+    public BaseResponseDTO<Object> getClass(@RequestBody RequestDTO reqDTO){
+        Object o= testBeanFactory.getClass(reqDTO.getStr());
+        return ResponseBuilder.buildSuccess(o);
     }
 }
