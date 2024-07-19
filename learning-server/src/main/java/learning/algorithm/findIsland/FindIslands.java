@@ -50,13 +50,13 @@ public class FindIslands {
         private int y;
 
         /*
-        等同于@AllArgsConstructor --定义有参构造函数
+        等同于@AllArgsConstructor --定义全部参数的构造函数
         public Island(int x, int y) {
             this.x = x;
             this.y = y;
         }
 
-        等同于@NoArgsConstructor --定义全部参数的构造函数
+        等同于@NoArgsConstructor --定义无参构造函数
         public Island() {
         }
         */
