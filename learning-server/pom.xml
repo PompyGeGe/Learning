@@ -82,6 +82,30 @@
             <version>4.3.1</version>
         </dependency>
 
+        <!--mysql驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <!--在<dependency>元素中包含<scope>runtime</scope>时，是在告诉Maven这个依赖仅在运行时（runtime）需要，而不是在编译（compile）阶段。
+            对于mysql-connector-java这样的数据库连接器，它并不参与应用的实际逻辑编译。此可以减少编译时的依赖，使得构建过程更加纯净-->
+            <scope>runtime</scope>
+            <!--这里没有指定<version>，是因为默认用了spring-boot-starter-parent的父类spring-boot-dependencies里定义的dependencyManagement，这个里面还定义了版本号-->
+        </dependency>
+
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.9</version>
+        </dependency>
+
+        <!--mybatis-spring包是适配包，帮助你在Spring中使用MyBatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>2.0.7</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
