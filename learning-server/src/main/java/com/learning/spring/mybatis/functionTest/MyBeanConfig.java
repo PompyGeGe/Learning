@@ -29,7 +29,7 @@ public class MyBeanConfig {
     public DataSource getDataSource(){
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        druidDataSource.setUrl("jdbc:mysql://localhost:3306/com.test");
+        druidDataSource.setUrl("jdbc:mysql://localhost:3306/test");
         druidDataSource.setUsername("root");
         druidDataSource.setPassword("root");
         return druidDataSource;

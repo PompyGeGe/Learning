@@ -7,7 +7,7 @@ import com.controller.dto.response.BaseResponseDTO;
 import com.learning.spring.beanRegister.TestBeanFactory;
 import com.learning.spring.beanRegister.TestPropertiesConfig;
 import com.learning.spring.mybatis.functionTest.model.Student;
-import com.learning.spring.mybatis.functionTest.StudentInfoService;
+import com.learning.spring.mybatis.functionTest.service.StudentInfoService;
 import com.learning.stateMachine.service.TestExecuteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

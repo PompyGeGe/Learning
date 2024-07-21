@@ -12,6 +12,4 @@ import org.springframework.stereotype.Service;
 public class StudentService {
     private int a;
 
-    @Autowired
-    private StudentService studentService;
 }

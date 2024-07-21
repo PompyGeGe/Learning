@@ -1,5 +1,6 @@
-package com.learning.spring.mybatis.functionTest;
+package com.learning.spring.mybatis.functionTest.service;
 
+import com.learning.spring.mybatis.functionTest.mapper.StudentInfoMapper;
 import com.learning.spring.mybatis.functionTest.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

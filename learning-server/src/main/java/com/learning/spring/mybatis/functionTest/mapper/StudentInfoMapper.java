@@ -1,9 +1,8 @@
-package com.learning.spring.mybatis.functionTest;
+package com.learning.spring.mybatis.functionTest.mapper;
 
 import com.learning.spring.mybatis.functionTest.model.Student;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
