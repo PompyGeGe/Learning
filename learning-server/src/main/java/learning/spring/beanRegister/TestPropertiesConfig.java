@@ -1,4 +1,4 @@
-package learning.spring;
+package learning.spring.beanRegister;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

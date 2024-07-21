@@ -13,57 +13,8 @@ import java.util.function.Consumer;
 public class Test {
 
     public static void main(String[] args) {
-        int a[] = {4, 5, 9};
-        int b[] = {1, 7, 6, 1};
-        System.out.println(add(a, b));
-    }
-
-    /**
-     * 返回总数
-     * @param a
-     * @param b
-     * @return
-     */
-    public static int add(int a[], int b[]){
-        int maxIndex = a.length>b.length?a.length:b.length;
-        int[]sum= new int[maxIndex];
-
-        int i=maxIndex-1;
-        while (i>0) {
-            sum[i] = tenMi(maxIndex-1-i)*(getInt(a, i)+getInt(b, i));
-            i--;
-        }
-
-        return sum(sum);
-    }
-
-    static int getInt(int array[], int i) {
-        if (i >= array.length - 1) {
-            return 0;
-        }
-        return array[i];
-    }
-
-
-    static int tenMi(int i){
-        int sum=1;
-        if (i == 0) {
-            return sum;
-        }
-
-        while(i>=1){
-            sum*=10;
-            i--;
-        }
-        return sum;
-    }
-
-    static int sum(int array[]){
-        int sum=0;
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
-        }
-        return sum;
+        System.out.println(System.getProperty("java.class.path"));
+        System.out.println(new Test().getClass().getClassLoader().getResource("StudentMapper.xml").getPath());
     }
 
 

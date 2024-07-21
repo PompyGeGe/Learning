@@ -4,8 +4,10 @@ import controller.common.builder.ResponseBuilder;
 import controller.dto.request.ReqDTO;
 import controller.dto.request.RequestDTO;
 import controller.dto.response.BaseResponseDTO;
-import learning.spring.TestBeanFactory;
-import learning.spring.TestPropertiesConfig;
+import learning.spring.beanRegister.TestBeanFactory;
+import learning.spring.beanRegister.TestPropertiesConfig;
+import learning.spring.mybatis.functionTest.model.Student;
+import learning.spring.mybatis.functionTest.StudentInfoService;
 import learning.stateMachine.service.TestExecuteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -29,6 +32,9 @@ public class TestController {
     @Autowired
     private TestBeanFactory testBeanFactory;
 
+
+    @Autowired
+    private StudentInfoService studentInfoService;
 
 
     @PostMapping("/stateMachine")
@@ -49,5 +55,15 @@ public class TestController {
     public BaseResponseDTO<Object> getClass(@RequestBody RequestDTO reqDTO){
         Object o= testBeanFactory.getClass(reqDTO.getStr());
         return ResponseBuilder.buildSuccess(o);
+    }
+
+    @PostMapping("/getFirstStudent")
+    public BaseResponseDTO<Student> getFirstStudent(){
+        return ResponseBuilder.buildSuccess(studentInfoService.getFirstStudent());
+    }
+
+    @PostMapping("/getAllStudents")
+    public BaseResponseDTO<List<Student>> getAllStudents(){
+        return ResponseBuilder.buildSuccess(studentInfoService.getAllStudents());
     }
 }
