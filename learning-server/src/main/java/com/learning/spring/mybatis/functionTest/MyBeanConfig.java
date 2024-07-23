@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.learning.spring.mybatis.functionTest.model.Student;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,4 +48,11 @@ public class MyBeanConfig {
         return sqlSessionFactoryBean.getObject();
     }
 
+    //可以像这样自己定义mybatis的MapperScannerConfigurer，不用mybatis-spring-boot-starter对MapperScannerConfigurer的自动配置; 也可以只用mybatis-spring的@MapperScan的注解
+/*    @Bean
+    public MapperScannerConfigurer mapperScannerConfigurer() {
+        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+        mapperScannerConfigurer.setBasePackage("com.learning.spring.mybatis.functionTest.mapper");  // 设置Mapper接口所在的包路径
+        return mapperScannerConfigurer;
+    }*/
 }

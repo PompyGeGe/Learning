@@ -11,7 +11,7 @@ import java.util.List;
  * @Date: 2024/7/21 17:44
  * @Description:
  */
-@Mapper
+//@Mapper
 public interface StudentInfoMapper {
 
     @Select("select * from student_info order by id desc limit 1 ")

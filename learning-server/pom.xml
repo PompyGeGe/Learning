@@ -107,17 +107,29 @@
         </dependency>
 
         <!--mybatis-spring包是适配包，帮助你在Spring中使用MyBatis-->
+        <!--用了mybatis-spring-boot-starter，就不需再导mybatis-spring了-->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>2.0.6</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.3.13</version>
-        </dependency>
+        <!--mybatis-spring-boot-starter包含了mybatis-spring;
+        而且，mybatis-spring-boot-starter会帮我们自动配置MapperScannerConfigurer，不需要自己定义了。
+        mybatis-spring-boot-starter自动配置MapperScannerConfigurer时，设置basePackage路径，一部分是@Mapper注解的接口的路径，一部分是application.properties等配置文件的路径
+        -->
+         <!--<dependency>
+             <groupId>org.mybatis.spring.boot</groupId>
+             <artifactId>mybatis-spring-boot-starter</artifactId>
+             <version>2.2.1</version>
+         </dependency>-->
+
+
+          <dependency>
+              <groupId>org.springframework</groupId>
+              <artifactId>spring-jdbc</artifactId>
+              <version>5.3.14</version>
+          </dependency>
 
         <!--spring依赖的aspectJ-->
         <dependency>
