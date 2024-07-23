@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.0</version>
+        <version>2.6.2</version>
         <relativePath/>
     </parent>
 
@@ -80,6 +80,49 @@
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-statemachine</artifactId>
             <version>4.3.1</version>
+        </dependency>
+
+        <!--druid数据源-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.2.8</version>
+        </dependency>
+
+        <!--mysql驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <!--在<dependency>元素中包含<scope>runtime</scope>时，是在告诉Maven这个依赖仅在运行时（runtime）需要，而不是在编译（compile）阶段。
+            对于mysql-connector-java这样的数据库连接器，它并不参与应用的实际逻辑编译。此可以减少编译时的依赖，使得构建过程更加纯净-->
+            <scope>runtime</scope>
+            <!--这里没有指定<version>，是因为默认用了spring-boot-starter-parent的父类spring-boot-dependencies里定义的dependencyManagement，这个里面还定义了版本号-->
+        </dependency>
+
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.9</version>
+        </dependency>
+
+        <!--mybatis-spring包是适配包，帮助你在Spring中使用MyBatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>2.0.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.13</version>
+        </dependency>
+
+        <!--spring依赖的aspectJ-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
         </dependency>
 
     </dependencies>

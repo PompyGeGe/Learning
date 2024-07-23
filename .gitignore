@@ -2,5 +2,7 @@ learning-server/target/
 .idea/
 learning-server/*.iml
 learning-server/logs/
-out/production/test/
-test/test.iml
+out/production/com.test/
+com/test/com.test.iml
+learning-server/learning-server.iml
+learning-server/target/classes/

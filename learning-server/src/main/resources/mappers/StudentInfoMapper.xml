@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.spring.mybatis.functionTest.mapper.StudentInfoMapper">
+    <select id="getAllStudents" resultType="com.learning.spring.mybatis.functionTest.model.Student">
+        SELECT * FROM student_info
+    </select>
+</mapper>
