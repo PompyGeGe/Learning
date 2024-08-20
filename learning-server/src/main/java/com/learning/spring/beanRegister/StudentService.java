@@ -1,6 +1,6 @@
 package com.learning.spring.beanRegister;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service("studentService2")
-public class StudentService {
-    private int a;
+public class StudentService{
+
+    @Value("${spring.profiles.active}")
+    private String a;
 
 }

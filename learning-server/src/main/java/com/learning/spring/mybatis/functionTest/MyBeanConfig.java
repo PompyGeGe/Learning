@@ -1,6 +1,7 @@
 package com.learning.spring.mybatis.functionTest;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.learning.spring.interceptors.MyFirstInterceptor;
 import com.learning.spring.mybatis.functionTest.model.Student;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.sql.DataSource;
 import java.util.Collections;
@@ -27,7 +29,7 @@ public class MyBeanConfig {
 
     //自己定义数据源
     @Bean
-    public DataSource getDataSource(){
+    public DataSource DataSource(){
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setDriverClassName("com.mysql.jdbc.Driver");
         druidDataSource.setUrl("jdbc:mysql://localhost:3306/test");
@@ -38,7 +40,7 @@ public class MyBeanConfig {
 
     //自己定义mybatis的SqlSessionFactory
     @Bean
-    public SqlSessionFactory getSqlSessionFactory(DataSource dataSource) throws Exception {//如果这个方法有参数，Spring会尝试从容器中查找与参数类型相匹配的Bean，并将它们注入到方法中
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {//如果这个方法有参数，Spring会尝试从容器中查找与参数类型相匹配的Bean，并将它们注入到方法中
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(
@@ -55,4 +57,6 @@ public class MyBeanConfig {
         mapperScannerConfigurer.setBasePackage("com.learning.spring.mybatis.functionTest.mapper");  // 设置Mapper接口所在的包路径
         return mapperScannerConfigurer;
     }*/
+
+
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @Description:
  */
 @Component
-@ConfigurationProperties(prefix = "com.test.properties.value")
+@ConfigurationProperties(prefix = "test.properties.value")
 @Data
 public class TestPropertiesConfig {
     private String a;
